@@ -22,7 +22,10 @@ function shallowCopy(obj) {
     return obj;
   }
 
-  return { ...obj };
+  return Object.create(
+    Object.getPrototypeOf(obj),
+    Object.getOwnPropertyDescriptors(obj)
+  );
 }
 
 /**
